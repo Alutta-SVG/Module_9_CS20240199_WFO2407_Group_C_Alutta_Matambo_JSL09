@@ -6,14 +6,14 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 })
    
        
-.catch(err => {
+.catch(_err => {
     document.body.style.backgroundImage=`url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixid=M3wxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjczNTQ4NzV8&ixlib=rb-4.0.3')` 
     document.getElementById("author").textContent =`By: Unsplash`
 })
 
 
 
- fetch("hppts://api.coingecko.com/api/v3/coins/dogecoin")
+ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
     .then(res => res.json())
     .then(data => console.log(data))
     .catch(err => console.error(err))
