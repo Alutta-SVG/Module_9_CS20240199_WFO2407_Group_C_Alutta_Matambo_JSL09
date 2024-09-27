@@ -13,7 +13,10 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 
 
 
- fetch()
+ fetch("hppts://api.coingecko.com/api/v3/coins/dogecoin")
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err))
 
 /** {
   id: '-SO3JtE3gZo',
