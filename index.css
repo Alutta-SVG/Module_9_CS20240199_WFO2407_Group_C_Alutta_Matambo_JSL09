@@ -9,12 +9,14 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    color: whitesmoke;
+    color: white;
+    text-shadow: 0px 0px 20px #242424;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 main {
     height: 100vh;
+    height: 10vh;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -36,8 +38,13 @@ div#crypto {
 div#crypto-top {
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
 }
 
 div#crypto-top > span {
     margin-left:10px;
+}
+
+div#crypto > p{
+    margin: 0;
 }

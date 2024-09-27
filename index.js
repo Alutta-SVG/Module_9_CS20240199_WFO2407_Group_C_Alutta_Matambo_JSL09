@@ -33,7 +33,7 @@ document.getElementById ("crypto").innerHTML +=`
 <p>🚨:$${data.market_data.low_24h.usd}</p>
 `
 })
-.catch(err => console.error(err))
+.catch(err => console.error(err)) 
   
 /** {
   id: '-SO3JtE3gZo',
