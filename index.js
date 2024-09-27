@@ -1,68 +1,61 @@
 fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
-.then(res => res.json())
-.then(data => { 
-    document.body.style.backgroundImage=`url(${data.urls.full})`
-    document.getElementById("author").textContent =`By: ${data.user.name}`
-})
-   
-       
-.catch(_err => {
-    document.body.style.backgroundImage=`url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixid=M3wxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjczNTQ4NzV8&ixlib=rb-4.0.3')` 
-    document.getElementById("author").textContent =`By: Unsplash`
-})
-
-
-
- fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
-    .then(res =>{
-      if (!res.ok){
-        throw Error('Something went wrong')
-      }
-      return res.json()
+    .then(res => res.json())
+    .then(data => { 
+        document.body.style.backgroundImage = `url(${data.urls.full})`;
+        document.getElementById("author").textContent = `By: ${data.user.name}`;
     })
-    
+    .catch(_err => {
+        document.body.style.backgroundImage = `url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixid=M3wxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjczNTQ4NzV8&ixlib=rb-4.0.3')`; 
+        document.getElementById("author").textContent = `By: Unsplash`;
+    });
+
+fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
+    .then(res => {
+        if (!res.ok) {
+            throw Error('Something went wrong');
+        }
+        return res.json();
+    })
+
     .then(data => {
-      document.getElementById("Crypto-top").innerHTML =`
-      <img src=${data.image.small} />
-      <span>${data.name}</span>`
-
-  
-document.getElementById ("crypto").innerHTML +=`
-<p>🚨:$${data.market_data.current_price.usd}</p>
-<p>🚨:$${data.market_data.high_24h.usd}</p>
-<p>🚨:$${data.market_data.low_24h.usd}</p>
-`
-})
-   .catch(err => console.error(err)) 
-
+        document.getElementById("Crypto-top").innerHTML = `
+            <img src="${data.image.small}" />
+            <span>${data.name}</span>`;
+        
+        document.getElementById("crypto").innerHTML += `
+            <p>🚨: $${data.market_data.current_price.usd}</p>
+            <p>🚨: $${data.market_data.high_24h.usd}</p>
+            <p>🚨: $${data.market_data.low_24h.usd}</p>`;
+    })
+    .catch(err => console.error(err));
 
 function getcurrentTime() {
-  const date = new Date()
-  document.getElementById("time").textContent= date.toLocaleTimeString("en-us", {timeStyle: "short"})
+    const date = new Date();
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-US", { timeStyle: "short" });
 }
 
-setInterval(getcurrentTime, 1000)
+setInterval(getcurrentTime, 1000);
 
 navigator.geolocation.getCurrentPosition(position => {
-  fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&
-    lon=${position.coords.longitude}&units=imperial`)
-    .then(res =>{
-      if(!res.ok) {
-        throw Error("Weather data not available")
-      }
-      return res.json()
-    })
-    .then(data => {
-      console.log(data)
-      const iconURL =`https://openweathermap.org/img/wn/${data.weather[0]}@2x.png`
-      document.getElementById("Weather").innerHTML = `
-      <img src=${iconURL} />
-      <p>${Math.round(data.main.temp)}</p>
-      <p>${data.name}</p>
-      `
-    })
-    .catch(err=> console.error(err))
-    })
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
+        .then(res => {
+            if (!res.ok) {
+                throw Error("Weather data not available");
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log(data);
+            const iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`; 
+            document.getElementById("Weather").innerHTML = `
+                <img src="${iconURL}" alt="Weather Icon" />
+                <p>${Math.round(data.main.temp)}°F</p>
+                <p>${data.name}</p>`;
+        })
+        .catch(err => console.error(err));
+}, error => {
+    console.error("Geolocation error:", error);
+});
 
   
 /** {

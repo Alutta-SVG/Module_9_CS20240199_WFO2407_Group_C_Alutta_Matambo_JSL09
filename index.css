@@ -48,3 +48,13 @@ div#crypto-top > span {
 div#crypto > p{
     margin: 0;
 }
+
+div#Weather{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+div#weather >img{
+    width: 70px;
+}
