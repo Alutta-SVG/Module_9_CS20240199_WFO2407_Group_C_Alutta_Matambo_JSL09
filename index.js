@@ -6,7 +6,9 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 })
    
        
-
+.catch(err => {
+    document.body.style.backgroundImage=`url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixid=M3wxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjczNTQ4NzV8&ixlib=rb-4.0.3')` 
+})
 
 /** {
   id: '-SO3JtE3gZo',
