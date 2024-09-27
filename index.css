@@ -12,3 +12,10 @@ body {
     color: whitesmoke;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+main {
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
