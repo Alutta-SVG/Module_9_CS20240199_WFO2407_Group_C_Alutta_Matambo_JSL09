@@ -14,10 +14,22 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 
 
  fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => console.error(err))
+    .then(res =>{
+      if (!res.ok){
+        throw Error('Something went wrong')
+      }
+      return res.json()
+    })
+    
+    .then(data => {
+      document.getElementById("crypto-top").innerHTML =`
+      <img src=${data.image.small} />
+      <span>${data.name}</span>`
 
+    })
+
+.catch(err => console.error(err))
+  
 /** {
   id: '-SO3JtE3gZo',
   slug: 'green-hills-with-forest-under-cloudy-sky-during-daytime--SO3JtE3gZo',
